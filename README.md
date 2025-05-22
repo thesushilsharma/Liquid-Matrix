@@ -17,6 +17,12 @@ A high-performance order book implementation that simulates real-world financial
 - Tailwind CSS
 - Zod
 
+
+## Contributing
+
+To contribute to this project, please submit any issues or pull requests on the GitHub repository.
+
+
 ## License
 
 This project is licensed under the MIT License.  See the [LICENSE](LICENSE) file for details.
