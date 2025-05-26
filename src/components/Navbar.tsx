@@ -5,12 +5,6 @@ import Link from "next/link";
 import { Button } from "./ui/button";
 import { useOrderBook } from "@/hooks/useOrderBook";
 import { useAuth } from "@/hooks/useAuth";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { ThemeToggle } from "./ThemeToggle";
 import { LogoutButton } from "./auth/logout-button";
@@ -32,25 +26,14 @@ export function NavBar() {
               <Button variant="outline" onClick={resetOrderBook}>
                 Reset Order Book
               </Button>
-              <DropdownMenu>
-                <DropdownMenuTrigger asChild>
-                  <Button
-                    variant="ghost"
-                    className="relative h-8 w-8 rounded-full"
-                  >
-                    <Avatar className="h-8 w-8">
-                      <AvatarFallback>
-                        {session.user.email?.[0].toUpperCase()}
-                      </AvatarFallback>
-                    </Avatar>
-                  </Button>
-                </DropdownMenuTrigger>
-                <DropdownMenuContent align="end">
-                  <DropdownMenuItem className="cursor-pointer" asChild>
-                    <LogoutButton />
-                  </DropdownMenuItem>
-                </DropdownMenuContent>
-              </DropdownMenu>
+              <Button variant="ghost" className="relative h-8 w-8 rounded-full">
+                <Avatar className="h-8 w-8">
+                  <AvatarFallback>
+                    {session.user.email?.[0].toUpperCase()}
+                  </AvatarFallback>
+                </Avatar>
+              </Button>
+              <LogoutButton />
             </>
           ) : (
             <Button variant="outline" asChild>

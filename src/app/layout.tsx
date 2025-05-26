@@ -3,6 +3,8 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/context/ThemeProvider";
 import { NavBar } from "@/components/Navbar";
+import QueryProvider from "@/context/QueryProvider";
+import { Toaster } from "@/components/ui/sonner";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -16,7 +18,8 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "Liquid Matrix | Where Market Depth Meets Algorithmic Precision",
-  description: "Liquid Matrix is a robust order book system that simmulates real world financial market dynamics with institutional-grade accuracy.",
+  description:
+    "Liquid Matrix is a robust order book system that simmulates real world financial market dynamics with institutional-grade accuracy.",
 };
 
 export default function RootLayout({
@@ -30,15 +33,17 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <ThemeProvider
-            attribute="class"
-            defaultTheme="dark"
-            enableSystem
-            disableTransitionOnChange
-          > <NavBar/>
-            <main>
-            {children}
-            </main>
-          </ThemeProvider>
+          attribute="class"
+          defaultTheme="dark"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <QueryProvider>
+          <NavBar />
+            <main>{children}</main>
+          </QueryProvider>
+          <Toaster />
+        </ThemeProvider>
       </body>
     </html>
   );

@@ -102,31 +102,33 @@ export const OrderEntryForm = () => {
                         defaultValue={field.value}
                         className="flex space-x-1"
                       >
-                        <div className="flex items-center w-1/2">
-                          <RadioGroupItem
-                            value="BUY"
-                            id="buy"
-                            className="peer sr-only"
-                          />
-                          <Label
-                            htmlFor="buy"
-                            className="w-full py-2 text-center peer-data-[state=checked]:bg-chart-1 peer-data-[state=checked]:text-white bg-secondary hover:bg-secondary/80 rounded-md cursor-pointer transition-colors"
-                          >
-                            Buy
-                          </Label>
-                        </div>
-                        <div className="flex items-center w-1/2">
-                          <RadioGroupItem
-                            value="SELL"
-                            id="sell"
-                            className="peer sr-only"
-                          />
-                          <Label
-                            htmlFor="sell"
-                            className="w-full py-2 text-center peer-data-[state=checked]:bg-destructive peer-data-[state=checked]:text-white bg-secondary hover:bg-secondary/80 rounded-md cursor-pointer transition-colors"
-                          >
-                            Sell
-                          </Label>
+                        <div className="flex items-center justify-between gap-4 w-full mb-2">
+                          <div className="flex-1">
+                            <RadioGroupItem
+                              value="BUY"
+                              id="buy"
+                              className="peer sr-only"
+                            />
+                            <Label
+                              htmlFor="buy"
+                              className="block w-full py-3 px-4 text-center peer-data-[state=checked]:bg-chart-1 peer-data-[state=checked]:text-white bg-secondary hover:bg-secondary/80 rounded-md cursor-pointer transition-colors"
+                            >
+                              Buy
+                            </Label>
+                          </div>
+                          <div className="flex-1">
+                            <RadioGroupItem
+                              value="SELL"
+                              id="sell"
+                              className="peer sr-only"
+                            />
+                            <Label
+                              htmlFor="sell"
+                              className="block w-full py-3 px-4 text-center peer-data-[state=checked]:bg-destructive peer-data-[state=checked]:text-white bg-secondary hover:bg-secondary/80 rounded-md cursor-pointer transition-colors"
+                            >
+                              Sell
+                            </Label>
+                          </div>
                         </div>
                       </RadioGroup>
                     </FormControl>
