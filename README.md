@@ -5,17 +5,21 @@ A high-performance order book implementation that simulates real-world financial
 ## Prerequisites
 
 - VS Code or any Code Editor
-- Node.js installed on your machine
+- Node.js is installed on your machine
 - npm package manager
 
 ## Technology Stack
 
 - Next.js
-- Neon (PostgreSQL) with Drizzle Orm
+- Neon (PostgreSQL) with Drizzle ORM
 - Supabase
 - Typescript
 - Tailwind CSS
 - Zod
+
+## Features
+- Market Orders
+- Limit Orders
 
 
 ## Contributing
