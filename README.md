@@ -18,9 +18,13 @@ A high-performance order book implementation that simulates real-world financial
 - Zod
 
 ## Features
+
 - Market Orders
 - Limit Orders
 
+## Known Issues
+
+- None
 
 ## Contributing
 
