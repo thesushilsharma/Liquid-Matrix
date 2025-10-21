@@ -25,11 +25,16 @@ import { cn } from "@/lib/utils";
 const OrderFormSchema = z.object({
   side: z.enum(["BUY", "SELL"]),
   type: z.enum(["LIMIT", "MARKET"]),
-  quantity: z.coerce.number().positive(),
-  price: z.coerce.number().positive().optional(),
+  quantity: z.number().positive(),
+  price: z.number().positive().optional(),
 });
 
-type OrderFormValues = z.infer<typeof OrderFormSchema>;
+type OrderFormValues = {
+  side: "BUY" | "SELL";
+  type: "LIMIT" | "MARKET";
+  quantity: number;
+  price?: number;
+};
 
 export const OrderEntryForm = () => {
   const { placeOrder, marketStats } = useOrderBook();
@@ -48,14 +53,17 @@ export const OrderEntryForm = () => {
   });
 
   const { watch, setValue } = form;
-  const orderType = watch("type");
 
   const onSubmit = (data: OrderFormValues) => {
+    // Ensure numbers are properly parsed
+    const quantity = typeof data.quantity === 'string' ? parseFloat(data.quantity) : data.quantity;
+    const price = data.price && typeof data.price === 'string' ? parseFloat(data.price) : data.price;
+    
     placeOrder(
       data.side as OrderSide,
       data.type as OrderType,
-      data.quantity,
-      data.price
+      quantity,
+      price
     );
 
     // Reset the form but keep the side and price
@@ -150,6 +158,7 @@ export const OrderEntryForm = () => {
                           type="number"
                           step="0.01"
                           min="0.01"
+                          onChange={(e) => field.onChange(parseFloat(e.target.value) || 0)}
                         />
                       </FormControl>
                       <FormMessage />
@@ -170,6 +179,7 @@ export const OrderEntryForm = () => {
                         type="number"
                         step="0.0001"
                         min="0.0001"
+                        onChange={(e) => field.onChange(parseFloat(e.target.value) || 0)}
                       />
                     </FormControl>
                     <FormMessage />
