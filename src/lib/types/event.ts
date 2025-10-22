@@ -12,7 +12,7 @@ export const EventSchema = z.object({
   startTime: z.string().datetime(),
   endTime: z.string().datetime(),
   externalId: z.string().nullable(),
-  externalData: z.record(z.unknown()).nullable(),
+  externalData: z.record(z.string(), z.unknown()).nullable(),
   createdAt: z.string().datetime(),
   updatedAt: z.string().datetime(),
 });
